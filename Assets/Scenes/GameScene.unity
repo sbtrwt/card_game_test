@@ -519,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameRoomSO: {fileID: 11400000, guid: c002b3db5b043934890849ca115d7cca, type: 2}
   playerCardContainer: {fileID: 1073342238}
-  dropCardContainer: {fileID: 0}
+  dropCardContainer: {fileID: 1366126276}
   roomUIService: {fileID: 1349136542}
 --- !u!4 &519683522
 Transform:

@@ -10,6 +10,7 @@ namespace CardGame.Card
         private GameRoomService gamerRoomService;
         private CardSO cardSO;
         private CardState currentState;
+        private CardModel cardModel;
 
         public CardController(CardView cardViewPrefab, Transform cardContainer) 
         {
@@ -24,6 +25,7 @@ namespace CardGame.Card
         public void Init(CardSO cardSO, GameRoomService gamerRoomService)
         {
             this.cardSO = cardSO;
+            this.cardModel = new CardModel { CardType = cardSO.CardTYPE, CardNumber = cardSO.CardNumber };
             this.gamerRoomService = gamerRoomService;
             SetState(CardState.CLOSED);
             cardView.gameObject.SetActive(true);
@@ -35,12 +37,7 @@ namespace CardGame.Card
             SetState(CardState.OPENED);
             SetCardFaceSprite();
         }
-        private void ResetCard()
-        {
-            gamerRoomService.RemoveCard(this);
-            cardView.gameObject.SetActive(false);
-
-        }
+       
 
         public void OnCardClickDown() 
         {
@@ -48,10 +45,18 @@ namespace CardGame.Card
             {
                 //Debug.Log("Mouse down");
                 if (currentState == CardState.CLOSED)
-                OpenCard();
+                { OpenCard(); }
+                
+                gamerRoomService.SetSelectedCardController(this);
+
             }
 
         }
+        public void SetParentContainer(Transform parentContainer) 
+        {
+            cardView.gameObject.transform.SetParent(parentContainer);
+        }
+
         public void OnCardClickUp()
         {
             if (cardView.ValidateClickAction())
@@ -63,6 +68,8 @@ namespace CardGame.Card
         {
             spriteRenderer.sprite = cardSO.CloseFace;
         }
+
+        public CardModel GetCardModel() => cardModel;
       
         public void SetCardFaceSprite(SpriteRenderer spriteRenderer)
         {

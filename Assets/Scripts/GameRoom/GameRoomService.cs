@@ -16,11 +16,12 @@ namespace CardGame.GameRoom
         private Stack<CardModel> currentDropDeck;
         private Transform dropCardContainer;
         private EventService eventService;
+        private CardController selectedCardController;
         public GameRoomService(GameRoomSO gameRoomSO)
         {
             this.gameRoomSO = gameRoomSO;
             InitBaseDeck();
-          
+
         }
         public void Init(Transform cardContainer, Transform dropCardContainer, EventService eventService)
         {
@@ -36,10 +37,15 @@ namespace CardGame.GameRoom
         private void SubscribeEvents()
         {
             eventService.OnCardDraw.AddListener(OnCardDraw);
+            eventService.OnCardDrop.AddListener(OnCardDrop);
         }
-        private void OnCardDraw(int count) 
+        private void OnCardDraw(int count)
         {
             DrawCards(count);
+        }
+        private void OnCardDrop(int count)
+        {
+            RemoveCardFromPlayer(selectedCardController);
         }
         private void InitBaseDeck()
         {
@@ -71,11 +77,18 @@ namespace CardGame.GameRoom
 
         }
 
-        public void RemoveCard(CardController cardController)
+        public void RemoveCardFromPlayer (CardController cardController)
         {
-          
+            if (cardController == null) return;
+            if (activeCards != null && activeCards.Count > 0)
+            {
+                activeCards.Remove(cardController);
+            }
+            AddCardToDropTable(cardController);
+           
         }
 
+        public void SetSelectedCardController(CardController cardController) => selectedCardController = cardController;
         private void SuffleDeck()
         {
             List<CardModel> tempDeck = new List<CardModel>(baseDeck);
@@ -101,7 +114,7 @@ namespace CardGame.GameRoom
 
         private void DrawCards(int cardCount)
         {
-            for(int i =0; i < cardCount; i++)
+            for (int i = 0; i < cardCount; i++)
             {
                 CardModel carDrew = currentDeck.Pop();
                 CardController cardController = cardPool.GetCard(carDrew.CardType, carDrew.CardNumber);
@@ -115,11 +128,18 @@ namespace CardGame.GameRoom
             int count = activeCards.Count;
             float cardWidth = 1.8f;
             float positionX = (cardWidth - (count * cardWidth)) / 2f;
-            for(int i=0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
-                activeCards[i].SetPosition(new Vector3(positionX, 0  , 0));
+                activeCards[i].SetPosition(new Vector3(positionX, 0, 0));
                 positionX += cardWidth;
             }
+        }
+
+        private void AddCardToDropTable(CardController cardController) 
+        {
+            cardController.SetParentContainer(dropCardContainer);
+            cardController.SetPosition(new Vector3(0, 0, 0));
+            currentDropDeck.Push(cardController.GetCardModel());
         }
         private void GameStart()
         {
