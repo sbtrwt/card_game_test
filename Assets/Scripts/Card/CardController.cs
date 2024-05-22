@@ -52,6 +52,14 @@ namespace CardGame.Card
             }
 
         }
+
+        public void ResetCard()
+        {
+            SetCardActive(false);
+            SetState(CardState.CLOSED);
+            SetCardFaceSprite();
+        }
+        public void SetCardActive(bool isActive) => cardView.gameObject.SetActive(isActive);
         public void SetParentContainer(Transform parentContainer) 
         {
             cardView.gameObject.transform.SetParent(parentContainer);
@@ -86,8 +94,7 @@ namespace CardGame.Card
         public enum CardState
         {
             CLOSED,
-            OPENED,
-            HIDDEN
+            OPENED
         }
 
       

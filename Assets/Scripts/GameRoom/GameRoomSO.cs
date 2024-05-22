@@ -13,5 +13,7 @@ namespace CardGame.GameRoom
         public List<CardSO> CardScriptableObjects;
         public GameRoomConfigurationSO GameRoomConfigurationSO;
         public CardView DefulatCardViewPrefab;
+        public int MaxHandCard;
+        public int WinTotal;
     }
 }
