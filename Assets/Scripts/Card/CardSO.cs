@@ -10,7 +10,7 @@ namespace CardGame.Card
         public CardNumber CardNumber;
         public Sprite OpenFace;
         public Sprite CloseFace;
-
+        public CardView CardViewPrefab;
     }
 
 
