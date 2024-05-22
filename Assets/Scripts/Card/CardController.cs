@@ -1,3 +1,4 @@
+using CardGame.GameRoom;
 using UnityEngine;
 
 namespace CardGame.Card
@@ -5,17 +6,22 @@ namespace CardGame.Card
     public class CardController
     {
         private CardView cardView;
+        private GameRoomService gamerRoomService;
         private CardSO cardSO;
-        public CardController(CardSO cardSO, Transform cardContainer) 
+        public CardController(CardView cardViewPrefab, Transform cardContainer) 
         {
-            this.cardSO = cardSO;
-            InitView(cardSO.CardViewPrefab, cardContainer);
+            InitView(cardViewPrefab, cardContainer);
         }
 
-        public void InitView(CardView cardViewPrefab, Transform cardContainer) 
+        private void InitView(CardView cardViewPrefab, Transform cardContainer) 
         {
             cardView = UnityEngine.Object.Instantiate(cardViewPrefab, cardContainer);
             cardView.SetController(this);
+        }
+        public void Init(CardSO cardSO, GameRoomService gamerRoomService)
+        {
+            this.cardSO = cardSO;
+            this.gamerRoomService = gamerRoomService;
         }
     }
 }

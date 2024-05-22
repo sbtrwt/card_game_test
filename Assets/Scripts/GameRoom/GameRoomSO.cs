@@ -12,5 +12,6 @@ namespace CardGame.GameRoom
         public string ShortTitle;
         public List<CardSO> CardScriptableObjects;
         public GameRoomConfigurationSO GameRoomConfigurationSO;
+        public CardView DefulatCardViewPrefab;
     }
 }

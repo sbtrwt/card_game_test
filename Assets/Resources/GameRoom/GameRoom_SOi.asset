@@ -69,3 +69,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad7e32a3f950db84c849b35083f9c3a0, type: 2}
   - {fileID: 11400000, guid: e5c661b578656d8469712adf299295ca, type: 2}
   GameRoomConfigurationSO: {fileID: 11400000, guid: 7c77a9dee38cfe042b4bbfb6b031516f, type: 2}
+  DefulatCardViewPrefab: {fileID: 4602318081907228164, guid: df9f635df0ca89343a1d0fca2a570b22, type: 3}

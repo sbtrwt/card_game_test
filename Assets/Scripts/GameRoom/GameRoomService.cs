@@ -1,12 +1,11 @@
 using CardGame.Card;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace CardGame.GameRoom
 {
-    public class GameRoomService 
+    public class GameRoomService
     {
         private GameRoomSO gameRoomSO;
         private Stack<CardModel> currentDeck;
@@ -17,32 +16,38 @@ namespace CardGame.GameRoom
             InitBaseDeck();
             SuffleDeck();
         }
-        private void InitBaseDeck() 
+        private void InitBaseDeck()
         {
             baseDeck = new List<CardModel>();
-            if(gameRoomSO.GameRoomConfigurationSO.GameRoomData.Deck == null || gameRoomSO.GameRoomConfigurationSO.GameRoomData.Deck.Count == 0)
+            if (gameRoomSO.GameRoomConfigurationSO.GameRoomData.Deck == null || gameRoomSO.GameRoomConfigurationSO.GameRoomData.Deck.Count == 0)
             {
-                foreach(CardType type in Enum.GetValues(typeof(CardType)))
+                foreach (CardType type in Enum.GetValues(typeof(CardType)))
                 {
+                    if (type == CardType.NONE)
+                    {
+                        continue;
+                    }
                     foreach (CardNumber number in Enum.GetValues(typeof(CardNumber)))
                     {
-                        if(type != CardType.NONE && number != CardNumber.NONE)
+                        if (number == CardNumber.NONE) continue;
+
                         baseDeck.Add(new CardModel { CardType = type, CardNumber = number });
                     }
+
                 }
             }
             else
             {
-                foreach(var card in gameRoomSO.GameRoomConfigurationSO.GameRoomData.Deck)
+                foreach (var card in gameRoomSO.GameRoomConfigurationSO.GameRoomData.Deck)
                 {
                     baseDeck.Add(new CardModel { CardType = card.CardType, CardNumber = card.CardNumber });
                 }
             }
-            
+
         }
 
 
-        private void SuffleDeck() 
+        private void SuffleDeck()
         {
             List<CardModel> tempDeck = new List<CardModel>(baseDeck);
 
@@ -54,6 +59,7 @@ namespace CardGame.GameRoom
             {
                 indexToPush = UnityEngine.Random.Range(0, count);
                 currentDeck.Push(tempDeck[indexToPush]);
+                Debug.Log(tempDeck[indexToPush].CardType + " " + tempDeck[indexToPush].CardNumber);
                 tempDeck.RemoveAt(indexToPush);
                 count--;
             }
