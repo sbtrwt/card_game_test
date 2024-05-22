@@ -1,6 +1,6 @@
 ﻿namespace CardGame.Card
 {
-    public enum CardType {SPADE, CLUB, DIAMOND, HEART }
+    public enum CardType {NONE, SPADE, CLUB, DIAMOND, HEART }
 
 
 }
