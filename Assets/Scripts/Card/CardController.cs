@@ -1,4 +1,5 @@
 using CardGame.GameRoom;
+using System;
 using UnityEngine;
 
 namespace CardGame.Card
@@ -9,6 +10,10 @@ namespace CardGame.Card
         private GameRoomService gamerRoomService;
         private CardSO cardSO;
         private CardState currentState;
+
+        private Vector3 offsetPosition;
+        private Vector3 originalPosition;
+        private bool isDragging = false;
         public CardController(CardView cardViewPrefab, Transform cardContainer) 
         {
             InitView(cardViewPrefab, cardContainer);
@@ -33,7 +38,19 @@ namespace CardGame.Card
             cardView.gameObject.SetActive(false);
 
         }
+        public void CardDraggedAt(Vector2 position)
+        {
+            //Validate card drag position
 
+        }
+
+        public void OnCardClickDown() 
+        {
+        }
+        public void OnCardClickUp()
+        {
+        }
+        public void SetPosition(Vector3 positionToSet) => cardView.gameObject.transform.localPosition = positionToSet;
         private void SetState(CardState state) => currentState = state;
         public enum CardState
         {
@@ -41,5 +58,7 @@ namespace CardGame.Card
             OPENED,
             HIDDEN
         }
+
+      
     }
 }

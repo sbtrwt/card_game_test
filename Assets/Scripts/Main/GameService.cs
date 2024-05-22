@@ -8,17 +8,26 @@ namespace CardGame.Main
     {
         private GameRoomService gameRoomService;
 
-
+        
         [SerializeField] private GameRoomSO gameRoomSO;
+
+        [SerializeField] private Transform playerCardContainer;
+        [SerializeField] private Transform dropCardContainer;
 
         private void Start()
         {
             InitializeServices();
+            InjectDependencies();
         }
 
         private void InitializeServices()
         {
             gameRoomService = new GameRoomService(gameRoomSO);
+        }
+        private void InjectDependencies()
+        {
+            gameRoomService.Init(playerCardContainer, dropCardContainer);
+           
         }
     }
 }

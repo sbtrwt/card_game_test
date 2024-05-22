@@ -15,11 +15,11 @@ namespace CardGame.Card
         private List<CardSO> cardScriptableObjects;
         private Transform cardContainer;
         private GameRoomService gamerRoomService;
-        public CardPool(GameRoomSO gameRoomSO, GameRoomService gamerRoomService)
+        public CardPool(GameRoomSO gameRoomSO, GameRoomService gamerRoomService, Transform cardContainer)
         {
             this.cardViewPrefab = gameRoomSO.DefulatCardViewPrefab;
             this.cardScriptableObjects = gameRoomSO.CardScriptableObjects;
-            this.cardContainer = new GameObject("Card Container").transform;
+            this.cardContainer = cardContainer;
             this.gamerRoomService = gamerRoomService;
         }
 

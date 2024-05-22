@@ -12,16 +12,21 @@ namespace CardGame.GameRoom
         private List<CardModel> baseDeck;
         private CardPool cardPool;
         private List<CardController> activeCards;
-
+        private Stack<CardModel> currentDropDeck;
+        private Transform dropCardContainer;
         public GameRoomService(GameRoomSO gameRoomSO)
         {
             this.gameRoomSO = gameRoomSO;
             InitBaseDeck();
-            SuffleDeck();
+          
         }
-        public void Init()
+        public void Init(Transform cardContainer, Transform dropCardContainer)
         {
-            InitializeCards();
+            this.dropCardContainer = dropCardContainer;
+            InitializeCards(cardContainer);
+            currentDropDeck = new Stack<CardModel>();
+
+            GameStart();
         }
         private void InitBaseDeck()
         {
@@ -70,15 +75,41 @@ namespace CardGame.GameRoom
             {
                 indexToPush = UnityEngine.Random.Range(0, count);
                 currentDeck.Push(tempDeck[indexToPush]);
-                Debug.Log(tempDeck[indexToPush].CardType + " " + tempDeck[indexToPush].CardNumber);
+                //Debug.Log(tempDeck[indexToPush].CardType + " " + tempDeck[indexToPush].CardNumber);
                 tempDeck.RemoveAt(indexToPush);
                 count--;
             }
         }
-        private void InitializeCards()
+        private void InitializeCards(Transform cardContainer)
         {
-            cardPool = new CardPool(gameRoomSO, this);
+            cardPool = new CardPool(gameRoomSO, this, cardContainer);
             activeCards = new List<CardController>();
+        }
+
+        private void DrawCards(int cardCount)
+        {
+            for(int i =0; i < cardCount; i++)
+            {
+                CardModel carDrew = currentDeck.Pop();
+                activeCards.Add(cardPool.GetCard(carDrew.CardType, carDrew.CardNumber));
+            }
+            ConfigureCardPosition();
+        }
+        private void ConfigureCardPosition()
+        {
+            int count = activeCards.Count;
+            float cardWidth = 1.8f;
+            float positionX = (cardWidth - (count * cardWidth)) / 2f;
+            for(int i=0; i < count; i++)
+            {
+                activeCards[i].SetPosition(new Vector3(positionX, 0  , 0));
+                positionX += cardWidth;
+            }
+        }
+        private void GameStart()
+        {
+            SuffleDeck();
+            DrawCards(3);
         }
     }
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CardJoker_SO
   m_EditorClassIdentifier: 
   CardTYPE: 0
-  CardNumber: 0
+  CardNumber: 14
   OpenFace: {fileID: -169321751, guid: 65fdf2508fc2293499d35ecc7e95b677, type: 3}
   CloseFace: {fileID: 1335946179, guid: fd7f414d091af5144830962fa1f13864, type: 3}

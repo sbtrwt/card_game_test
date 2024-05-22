@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc6945ed9f1b304ea48bbbdf09e1516, type: 3}
   m_Name: CardHeart_SO 5
   m_EditorClassIdentifier: 
-  CardTYPE: 0
-  CardNumber: 4
+  CardTYPE: 4
+  CardNumber: 5
   OpenFace: {fileID: -169321751, guid: 65fdf2508fc2293499d35ecc7e95b677, type: 3}
   CloseFace: {fileID: -259814329, guid: cbe9e516b33b6df45824eb9795a1fd47, type: 3}

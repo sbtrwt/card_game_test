@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 792636100977627775}
   - component: {fileID: 5770311993791011100}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FaceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5305214068611523012}
   - component: {fileID: 4602318081907228164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 305488450808193506}
   - component: {fileID: 7225333504375798471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CloseImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
