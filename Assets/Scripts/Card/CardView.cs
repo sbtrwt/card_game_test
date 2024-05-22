@@ -66,7 +66,7 @@ namespace CardGame.Card
         
         public void SetCardFaceSprite()
         {
-            controller.SetCardFaceSprite(faceSpriteRenderer);
+            controller?.SetCardFaceSprite(faceSpriteRenderer);
 
         }
     }
