@@ -1,4 +1,5 @@
 using CardGame.Card;
+using CardGame.Events;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,19 +15,31 @@ namespace CardGame.GameRoom
         private List<CardController> activeCards;
         private Stack<CardModel> currentDropDeck;
         private Transform dropCardContainer;
+        private EventService eventService;
         public GameRoomService(GameRoomSO gameRoomSO)
         {
             this.gameRoomSO = gameRoomSO;
             InitBaseDeck();
           
         }
-        public void Init(Transform cardContainer, Transform dropCardContainer)
+        public void Init(Transform cardContainer, Transform dropCardContainer, EventService eventService)
         {
+            this.eventService = eventService;
             this.dropCardContainer = dropCardContainer;
             InitializeCards(cardContainer);
             currentDropDeck = new Stack<CardModel>();
 
             GameStart();
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            eventService.OnCardDraw.AddListener(OnCardDraw);
+        }
+        private void OnCardDraw(int count) 
+        {
+            DrawCards(count);
         }
         private void InitBaseDeck()
         {
@@ -92,6 +105,7 @@ namespace CardGame.GameRoom
             {
                 CardModel carDrew = currentDeck.Pop();
                 CardController cardController = cardPool.GetCard(carDrew.CardType, carDrew.CardNumber);
+                Debug.Log(carDrew.CardType + " " + carDrew.CardNumber);
                 activeCards.Add(cardController);
             }
             ConfigureCardPosition();
