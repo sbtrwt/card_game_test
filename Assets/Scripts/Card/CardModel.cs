@@ -9,7 +9,7 @@ namespace CardGame.Card
     [System.Serializable]
     public class CardModel
     {
-        CardType CardType { get; set; }
-        CardNumber CardNumber { get; set; }
+        public CardType CardType;
+        public CardNumber CardNumber;
     }
 }
