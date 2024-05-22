@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 414d95dbcd84c2f4f8340ae032a91411, type: 3}
+  m_Name: GameRoom_SOi
+  m_EditorClassIdentifier: 
+  ID: 1
+  ShortTitle: 
+  CardScriptableObjects:
+  - {fileID: 11400000, guid: 8998c08b94ce3f240ad46d54b0f5fb43, type: 2}
+  - {fileID: 11400000, guid: 853dfdcbf0c434e488341bf1b107bb9a, type: 2}
+  - {fileID: 11400000, guid: c18bb44b455243c44a400537f8b83a14, type: 2}
+  - {fileID: 11400000, guid: 631f870076e4ffd40a11b06a1e780e95, type: 2}
+  - {fileID: 11400000, guid: a9300abd6f015c74fb8d397bf4f94bcb, type: 2}
+  - {fileID: 11400000, guid: da1f267ed9c489c4e8f60da0c46bbd12, type: 2}
+  - {fileID: 11400000, guid: 4994cfee05b05274aa8f1a58b31198ba, type: 2}
+  - {fileID: 11400000, guid: 66a4b51321aceeb4d81886ac36b8894a, type: 2}
+  - {fileID: 11400000, guid: 271914bb773924047bc2e1be15b5d99a, type: 2}
+  - {fileID: 11400000, guid: 62e8e33a5a49d9b49bcf97232fd49a2f, type: 2}
+  - {fileID: 11400000, guid: 7b004d68307841648bfaf176a81724ca, type: 2}
+  - {fileID: 11400000, guid: 41806e78c804c0841b3c9501d83c82c3, type: 2}
+  - {fileID: 11400000, guid: 2baac85ad3ab6e14285ba738af44361f, type: 2}
+  - {fileID: 11400000, guid: d4fecd7008e8e7d4f8d134eac9803445, type: 2}
+  - {fileID: 11400000, guid: e6a3dc4da06bb82479cc1a2080c906d5, type: 2}
+  - {fileID: 11400000, guid: 61577f4041845d942ba5a231155326dc, type: 2}
+  - {fileID: 11400000, guid: 3219142a56d4e204b826583c6f72b275, type: 2}
+  - {fileID: 11400000, guid: eae81c8ab364d7b409d47511e8fc121d, type: 2}
+  - {fileID: 11400000, guid: fc3e0b3c17d9b4d4d85e2269b9ef2efb, type: 2}
+  - {fileID: 11400000, guid: 11e4a9020ba2e53409c39a9058b1720f, type: 2}
+  - {fileID: 11400000, guid: f53a3cb535b281e42a39d9153397cbda, type: 2}
+  - {fileID: 11400000, guid: ca539c85c1c432f4c95aac9837e73d86, type: 2}
+  - {fileID: 11400000, guid: 7d03ffbc346d4674ebf3555bcad5b663, type: 2}
+  - {fileID: 11400000, guid: c98cf050a282cd3418d3622d9e0640bb, type: 2}
+  - {fileID: 11400000, guid: c01e55405184ef24385fa5d235dd825c, type: 2}
+  - {fileID: 11400000, guid: dfa269ac827112a4e9573bbc7b9242af, type: 2}
+  - {fileID: 11400000, guid: f9cdb049cf194284392c855cb30d9fb1, type: 2}
+  - {fileID: 11400000, guid: 87ee6069918bd474f9684f309410adb2, type: 2}
+  - {fileID: 11400000, guid: c68bd518c150e16409382c4589830c00, type: 2}
+  - {fileID: 11400000, guid: 8ed1be4fbc6db4040af2dddd62cf4b40, type: 2}
+  - {fileID: 11400000, guid: 8923418c11ac441428002b440dba87a1, type: 2}
+  - {fileID: 11400000, guid: e62b1c98c89060f42b7150e0802c6956, type: 2}
+  - {fileID: 11400000, guid: 8e265502466e9e64d8dc3fb928939caf, type: 2}
+  - {fileID: 11400000, guid: eebc788488db5ae4283be4ab0f17e38a, type: 2}
+  - {fileID: 11400000, guid: c1a37b4b67f74114d8bfb26e0a2dc2b2, type: 2}
+  - {fileID: 11400000, guid: fed11fae4d0067d48b07c8e7ecc486fa, type: 2}
+  - {fileID: 11400000, guid: 71118f5fe17275241acdfa73dc0beed6, type: 2}
+  - {fileID: 11400000, guid: 785f61c529df5264683d9d92e9fddadc, type: 2}
+  - {fileID: 11400000, guid: 8ee2dfc7483172041a6a4cc9624ac2b4, type: 2}
+  - {fileID: 11400000, guid: 6be4227fa4d63414eb6ffba26509cdcb, type: 2}
+  - {fileID: 11400000, guid: 9cb0f6724134081418bdf7406a240b74, type: 2}
+  - {fileID: 11400000, guid: 4b8e1d3001fbb724788caa0ce827ba4c, type: 2}
+  - {fileID: 11400000, guid: 46f96c099a556344dbd6f126ed7e1756, type: 2}
+  - {fileID: 11400000, guid: d732caa5784b24146a7bf0e69af1683c, type: 2}
+  - {fileID: 11400000, guid: 63adfcf1ebc616e46ad0a9226c2a9fb1, type: 2}
+  - {fileID: 11400000, guid: 0a11e58afb096f746b390ee159135b6e, type: 2}
+  - {fileID: 11400000, guid: 27b08bae616999e45aaae9bc64bc918c, type: 2}
+  - {fileID: 11400000, guid: 3b7aa28bff63b1843b2d3cffb90548aa, type: 2}
+  - {fileID: 11400000, guid: af925b00723acd0439a95c56780ced8b, type: 2}
+  - {fileID: 11400000, guid: 75a8ec8c1bb8b1c4c94cc248b8e1b48a, type: 2}
+  - {fileID: 11400000, guid: 10ef26f0b27f7c049871f0fc5abc063b, type: 2}
+  - {fileID: 11400000, guid: ad7e32a3f950db84c849b35083f9c3a0, type: 2}
+  - {fileID: 11400000, guid: e5c661b578656d8469712adf299295ca, type: 2}
+  GameRoomConfigurationSO: {fileID: 11400000, guid: 7c77a9dee38cfe042b4bbfb6b031516f, type: 2}
+  DefulatCardViewPrefab: {fileID: 4602318081907228164, guid: df9f635df0ca89343a1d0fca2a570b22, type: 3}
+  MaxHandCard: 3
+  WinTotal: 26

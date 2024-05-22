@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc6945ed9f1b304ea48bbbdf09e1516, type: 3}
+  m_Name: CardClub_SO 6
+  m_EditorClassIdentifier: 
+  CardTYPE: 2
+  CardNumber: 6
+  OpenFace: {fileID: -375668410, guid: cbe9e516b33b6df45824eb9795a1fd47, type: 3}
+  CloseFace: {fileID: -169321751, guid: 65fdf2508fc2293499d35ecc7e95b677, type: 3}
