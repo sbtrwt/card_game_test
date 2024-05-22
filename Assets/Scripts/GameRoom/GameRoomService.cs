@@ -10,11 +10,18 @@ namespace CardGame.GameRoom
         private GameRoomSO gameRoomSO;
         private Stack<CardModel> currentDeck;
         private List<CardModel> baseDeck;
+        private CardPool cardPool;
+        private List<CardController> activeCards;
+
         public GameRoomService(GameRoomSO gameRoomSO)
         {
             this.gameRoomSO = gameRoomSO;
             InitBaseDeck();
             SuffleDeck();
+        }
+        public void Init()
+        {
+            InitializeCards();
         }
         private void InitBaseDeck()
         {
@@ -46,6 +53,10 @@ namespace CardGame.GameRoom
 
         }
 
+        public void RemoveCard(CardController cardController)
+        {
+          
+        }
 
         private void SuffleDeck()
         {
@@ -63,6 +74,11 @@ namespace CardGame.GameRoom
                 tempDeck.RemoveAt(indexToPush);
                 count--;
             }
+        }
+        private void InitializeCards()
+        {
+            cardPool = new CardPool(gameRoomSO, this);
+            activeCards = new List<CardController>();
         }
     }
 }
