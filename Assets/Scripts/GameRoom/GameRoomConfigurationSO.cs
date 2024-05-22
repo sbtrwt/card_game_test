@@ -4,9 +4,9 @@ using UnityEngine;
 namespace CardGame.GameRoom
 {
     [CreateAssetMenu(fileName = "GameRoomConfiguration", menuName = "ScriptableObjects/GameRoomConfiguration")]
-    public class GameRoomConfiguration : ScriptableObject
+    public class GameRoomConfigurationSO : ScriptableObject
     {
         public int GameRoomID;
-        public List<GameRoomData> WaveDatas;
+        public GameRoomData GameRoomData;
     }
 }

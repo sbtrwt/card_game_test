@@ -11,5 +11,6 @@ namespace CardGame.GameRoom
         public int ID;
         public string ShortTitle;
         public List<CardSO> CardScriptableObjects;
+        public GameRoomConfigurationSO GameRoomConfigurationSO;
     }
 }

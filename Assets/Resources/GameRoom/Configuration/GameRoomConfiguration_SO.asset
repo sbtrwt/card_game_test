@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecc95952ab57544ebd4cfaa4783e2c0, type: 3}
   m_Name: GameRoomConfiguration_SO
   m_EditorClassIdentifier: 
-  GameRoomID: 0
+  GameRoomID: 1
   WaveDatas:
   - GameRoomID: 1
     Deck:
