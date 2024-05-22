@@ -27,7 +27,7 @@ namespace CardGame.Card
         {
             CardController cardController = GetItem();
             CardSO scriptableObjectToUse = cardScriptableObjects.Find(so => so.CardTYPE == cardType && so.CardNumber== cardNumber);
-            //card.Init(scriptableObjectToUse, gamerRoomService);
+            cardController.Init(scriptableObjectToUse, gamerRoomService);
             return cardController;
         }
 

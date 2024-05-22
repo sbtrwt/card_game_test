@@ -11,9 +11,11 @@ namespace CardGame.Card
         private CardSO cardSO;
         private CardState currentState;
 
-        private Vector3 offsetPosition;
-        private Vector3 originalPosition;
-        private bool isDragging = false;
+        //private Vector3 offsetPosition;
+        //private Vector3 originalPosition;
+        //private bool isDragging = false;
+      
+
         public CardController(CardView cardViewPrefab, Transform cardContainer) 
         {
             InitView(cardViewPrefab, cardContainer);
@@ -30,7 +32,13 @@ namespace CardGame.Card
             this.gamerRoomService = gamerRoomService;
             SetState(CardState.CLOSED);
             cardView.gameObject.SetActive(true);
+            //SetCardFaceSprite();
+        }
 
+        public void OpenCard() 
+        {
+            SetState(CardState.OPENED);
+            SetCardFaceSprite();
         }
         private void ResetCard()
         {
@@ -38,18 +46,38 @@ namespace CardGame.Card
             cardView.gameObject.SetActive(false);
 
         }
-        public void CardDraggedAt(Vector2 position)
-        {
-            //Validate card drag position
-
-        }
 
         public void OnCardClickDown() 
         {
+            if (cardView.ValidateClickAction())
+            {
+                Debug.Log("Mouse down");
+                //if (currentState == CardState.CLOSED)
+                OpenCard();
+            }
+
         }
         public void OnCardClickUp()
         {
+            if (cardView.ValidateClickAction())
+            {
+                Debug.Log("Mouse up");
+            }
         }
+        public void SetCloseSprite(SpriteRenderer spriteRenderer)
+        {
+            spriteRenderer.sprite = cardSO.CloseFace;
+        }
+      
+        public void SetCardFaceSprite(SpriteRenderer spriteRenderer)
+        {
+            spriteRenderer.sprite = (currentState == CardState.OPENED)? cardSO.OpenFace : cardSO.CloseFace;
+        }
+        public void SetCardFaceSprite()
+        {
+            cardView.SetCardFaceSprite();
+        }
+
         public void SetPosition(Vector3 positionToSet) => cardView.gameObject.transform.localPosition = positionToSet;
         private void SetState(CardState state) => currentState = state;
         public enum CardState

@@ -4,11 +4,10 @@ namespace CardGame.Card
 {
     public class CardView : MonoBehaviour
     {
+        [SerializeField] private BoxCollider2D boxCollider2D;
+        [SerializeField] private SpriteRenderer faceSpriteRenderer;
         private CardController controller;
-
-        private Vector3 offsetPosition;
-        private Vector3 originalPosition;
-        private bool isDragging = false;
+                
         private Camera mainCamera;
 
         private void Awake()
@@ -21,45 +20,53 @@ namespace CardGame.Card
            
         }
 
+
         private void Update()
         {
+#if UNITY_EDITOR
             if (Input.GetMouseButtonDown(0))
             {
-                OnCardMouseDown();
+                controller?.OnCardClickDown();
             }
             if (Input.GetMouseButtonUp(0))
             {
-                OnCardMouseUp();
-            }
-            if (isDragging)
-            {
-                OnCardMouseDrag();
-            }
-        }
-        private void OnCardMouseDown()
-        {
-            Debug.Log("Mouse down");
-            originalPosition = transform.position;
-            offsetPosition = transform.position - mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            isDragging = true;
-        }
-        private void OnCardMouseUp()
-        {
-            Debug.Log("Mouse up");
-            ResetCardImage();
-            //controller.CardDraggedAt(transform.position);
-            isDragging = false;
-        }
-        private void OnCardMouseDrag()
-        {
-            Debug.Log("Mouse drag");
-            transform.position = mainCamera.ScreenToWorldPoint(Input.mousePosition) + offsetPosition;
+                controller?.OnCardClickUp();
 
-            //controller.SetPosition(mainCamera.ScreenToWorldPoint(Input.mousePosition) + offsetPosition);
+            }
+#endif
+#if UNITY_ANRDOID
+            if (Input.touchCount >= 1)
+            {
+                if (Input.touches[0].phase == TouchPhase.Began)
+                {
+                    controller?.OnCardClickDown();
+                }
+
+                if (Input.touches[0].phase == TouchPhase.Ended)
+                {
+                    controller?.OnCardClickUp();
+                }
+            }
+#endif
+
         }
-        private void ResetCardImage()
+
+        public bool ValidateClickAction() 
         {
-            transform.position = originalPosition;
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+
+            if (hit.collider != null && boxCollider2D.Equals(hit.collider))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        
+        public void SetCardFaceSprite()
+        {
+            controller.SetCardFaceSprite(faceSpriteRenderer);
 
         }
     }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardTYPE: 4
   CardNumber: 1
-  OpenFace: {fileID: -169321751, guid: 65fdf2508fc2293499d35ecc7e95b677, type: 3}
-  CloseFace: {fileID: 332817339, guid: cbe9e516b33b6df45824eb9795a1fd47, type: 3}
+  OpenFace: {fileID: 332817339, guid: cbe9e516b33b6df45824eb9795a1fd47, type: 3}
+  CloseFace: {fileID: -169321751, guid: 65fdf2508fc2293499d35ecc7e95b677, type: 3}

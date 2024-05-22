@@ -91,7 +91,8 @@ namespace CardGame.GameRoom
             for(int i =0; i < cardCount; i++)
             {
                 CardModel carDrew = currentDeck.Pop();
-                activeCards.Add(cardPool.GetCard(carDrew.CardType, carDrew.CardNumber));
+                CardController cardController = cardPool.GetCard(carDrew.CardType, carDrew.CardNumber);
+                activeCards.Add(cardController);
             }
             ConfigureCardPosition();
         }
