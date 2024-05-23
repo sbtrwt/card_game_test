@@ -16,10 +16,10 @@ namespace CardGame.Player
             PlayerGameDataHistory = new List<PlayerGameData>();
         }
 
-        public List<PlayerGameData> GetSavedHistory() 
+        public List<PlayerGameData> GetSavedHistory()
         {
             string historyText = SecurePlayerPrefs.GetString(GlobalConstant.KEY_PLAYERDATAHISTORY);
-            Debug.Log(historyText);
+            //Debug.Log(historyText);
             PlayerGameHistory tempHistory = new PlayerGameHistory();
             if (!string.IsNullOrEmpty(historyText))
             { JsonUtility.FromJsonOverwrite(historyText, tempHistory); }
@@ -28,12 +28,11 @@ namespace CardGame.Player
 
         public void AddSavedHistory(PlayerGameData newGameEntry)
         {
-          
-               PlayerGameDataHistory = GetSavedHistory();
+            PlayerGameDataHistory = GetSavedHistory();
             PlayerGameDataHistory.Add(newGameEntry);
-            Debug.Log(JsonUtility.ToJson(this));
+            //Debug.Log(JsonUtility.ToJson(this));
             SecurePlayerPrefs.SetString(GlobalConstant.KEY_PLAYERDATAHISTORY, JsonUtility.ToJson(this));
-           
+
         }
     }
 }

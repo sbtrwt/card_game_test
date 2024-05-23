@@ -23,18 +23,18 @@ namespace CardGame.Card
 
         private void Update()
         {
-#if UNITY_EDITOR
-            if (Input.GetMouseButtonDown(0))
-            {
-                controller?.OnCardClickDown();
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                controller?.OnCardClickUp();
+//#if UNITY_EDITOR
+//            if (Input.GetMouseButtonDown(0))
+//            {
+//                controller?.OnCardClickDown();
+//            }
+//            if (Input.GetMouseButtonUp(0))
+//            {
+//                controller?.OnCardClickUp();
 
-            }
-#endif
-#if UNITY_ANRDOID
+//            }
+//#endif
+//#if UNITY_ANDROID
             if (Input.touchCount >= 1)
             {
                 if (Input.touches[0].phase == TouchPhase.Began)
@@ -47,7 +47,7 @@ namespace CardGame.Card
                     controller?.OnCardClickUp();
                 }
             }
-#endif
+//#endif
 
         }
 
