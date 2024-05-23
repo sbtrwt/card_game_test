@@ -18,7 +18,9 @@ namespace CardGame.Player
         public List<PlayerGameData> GetSavedHistory() 
         {
             string historyText = SecurePlayerPrefs.GetString(GlobalConstant.KEY_PLAYERDATAHISTORY);
-            JsonUtility.FromJsonOverwrite(historyText, PlayerGameDataHistory);
+            Debug.Log(historyText);
+            if (!string.IsNullOrEmpty(historyText))
+            { JsonUtility.FromJsonOverwrite(historyText, PlayerGameDataHistory); }
             return PlayerGameDataHistory;
         }
 
