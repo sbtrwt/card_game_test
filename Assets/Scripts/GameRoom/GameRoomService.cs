@@ -44,17 +44,23 @@ namespace CardGame.GameRoom
         }
         private void OnCardDraw(int count)
         {
-            DrawCards(count);
+            if (activeCards.Count == gameRoomSO.MaxHandCard)
+            {
+                DrawCards(count);
+            }
         }
         private void OnCardDrop(int count)
         {
-            RemoveCardFromPlayer(selectedCardController);
-
-            //check for win total
-            if (ActiveCardsTotal() == gameRoomSO.WinTotal) 
+            if (activeCards.Count > gameRoomSO.MaxHandCard)
             {
-                //Game result window
-                eventService.OnGameOver.InvokeEvent(1);
+                RemoveCardFromPlayer(selectedCardController);
+
+                //check for win total
+                if (ActiveCardsTotal() == gameRoomSO.WinTotal)
+                {
+                    //Game result window
+                    eventService.OnGameOver.InvokeEvent(1);
+                }
             }
         }
         private void InitBaseDeck()
@@ -87,7 +93,7 @@ namespace CardGame.GameRoom
 
         }
 
-        public void RemoveCardFromPlayer (CardController cardController)
+        public void RemoveCardFromPlayer(CardController cardController)
         {
             if (cardController == null) return;
             if (activeCards != null && activeCards.Count > 0)
@@ -95,10 +101,32 @@ namespace CardGame.GameRoom
                 activeCards.Remove(cardController);
             }
             AddCardToDropTable(cardController);
+
+        }
+
+        public void SetSelectedCardController(CardController cardController)
+        {
+            SetSelectedCardPosition(0);
+
+             selectedCardController = cardController;
+
+            SetSelectedCardPosition(0.5f);
+
+        }
+
+        private void SetSelectedCardPosition(float yOffset)
+        {
+            Vector3 position;
+            if (selectedCardController != null)
+            {
+                position = selectedCardController.GetLocalPosition();
+                position.y = yOffset;
+                selectedCardController.SetLocalPosition(position);
+            }
+
            
         }
 
-        public void SetSelectedCardController(CardController cardController) => selectedCardController = cardController;
         private void SuffleDeck()
         {
             List<CardModel> tempDeck = new List<CardModel>(baseDeck);
@@ -110,7 +138,7 @@ namespace CardGame.GameRoom
             while (count > 0)
             {
                 indexToPush = UnityEngine.Random.Range(0, count);
-               
+
                 currentDeck.Push(tempDeck[indexToPush]);
                 //Debug.Log(tempDeck[indexToPush].CardType + " " + tempDeck[indexToPush].CardNumber);
                 tempDeck.RemoveAt(indexToPush);
@@ -127,6 +155,7 @@ namespace CardGame.GameRoom
         {
             if (currentDeck.Count > 0)
             {
+
                 for (int i = 0; i < cardCount; i++)
                 {
                     CardModel carDrew = currentDeck.Pop();
@@ -136,6 +165,7 @@ namespace CardGame.GameRoom
                     cardController.SetParentContainer(cardContainer);
                 }
                 ConfigureCardPosition();
+
             }
         }
         private void ConfigureCardPosition()
@@ -145,16 +175,16 @@ namespace CardGame.GameRoom
             float positionX = (cardWidth - (count * cardWidth)) / 2f;
             for (int i = 0; i < count; i++)
             {
-                activeCards[i].SetPosition(new Vector3(positionX, 0, 0));
+                activeCards[i].SetLocalPosition(new Vector3(positionX, 0, 0));
                 positionX += cardWidth;
             }
         }
 
-        private void AddCardToDropTable(CardController cardController) 
+        private void AddCardToDropTable(CardController cardController)
         {
             cardController.SetParentContainer(dropCardContainer);
-            cardController.SetPosition(new Vector3(0, 0, 0));
-            if(prevDroppedCardController != null)
+            cardController.SetLocalPosition(new Vector3(0, 0, 0));
+            if (prevDroppedCardController != null)
             {
                 cardPool.ReturnItem(prevDroppedCardController);
                 prevDroppedCardController.ResetCard();
@@ -168,16 +198,16 @@ namespace CardGame.GameRoom
         private void GameStart()
         {
             SuffleDeck();
-            DrawCards(3);
+            DrawCards(gameRoomSO.MaxHandCard);
         }
 
-        private int ActiveCardsTotal() 
+        private int ActiveCardsTotal()
         {
             int sum = 0;
             CardModel cardModel;
-            foreach(CardController card in activeCards)
+            foreach (CardController card in activeCards)
             {
-                cardModel =  card.GetCardModel();
+                cardModel = card.GetCardModel();
                 sum += Convert.ToInt32(cardModel.CardNumber);
             }
             return sum;

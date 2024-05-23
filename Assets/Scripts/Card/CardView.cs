@@ -1,4 +1,4 @@
-using CardGame.UI.Card;
+
 using UnityEngine;
 namespace CardGame.Card
 {

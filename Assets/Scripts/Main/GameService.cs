@@ -1,8 +1,6 @@
 using CardGame.Events;
 using CardGame.GameRoom;
 using CardGame.UI.Room;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 namespace CardGame.Main
 {
@@ -10,7 +8,7 @@ namespace CardGame.Main
     {
         private GameRoomService gameRoomService;
         private EventService eventService;
-        
+
         [SerializeField] private GameRoomSO gameRoomSO;
 
         [SerializeField] private Transform playerCardContainer;
@@ -19,10 +17,18 @@ namespace CardGame.Main
         [SerializeField] private RoomUIService roomUIService;
         private void Start()
         {
+            SetGameRoomSO();
             InitializeServices();
             InjectDependencies();
         }
 
+        private void SetGameRoomSO()
+        {
+            if (CommonDataService.Instance)
+            {
+                gameRoomSO = CommonDataService.Instance.SelectedGameRoom;
+            }
+        }
         private void InitializeServices()
         {
             gameRoomService = new GameRoomService(gameRoomSO);

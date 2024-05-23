@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 414d95dbcd84c2f4f8340ae032a91411, type: 3}
-  m_Name: GameRoom_SOi
+  m_Name: GameRoom_SO
   m_EditorClassIdentifier: 
   ID: 1
-  ShortTitle: 
+  ShortTitle: Win 26
   CardScriptableObjects:
   - {fileID: 11400000, guid: 8998c08b94ce3f240ad46d54b0f5fb43, type: 2}
   - {fileID: 11400000, guid: 853dfdcbf0c434e488341bf1b107bb9a, type: 2}

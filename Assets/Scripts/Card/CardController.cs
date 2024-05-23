@@ -89,7 +89,9 @@ namespace CardGame.Card
             cardView.SetCardFaceSprite();
         }
 
-        public void SetPosition(Vector3 positionToSet) => cardView.gameObject.transform.localPosition = positionToSet;
+        public void SetLocalPosition(Vector3 positionToSet) => cardView.gameObject.transform.localPosition = positionToSet;
+
+        public Vector3 GetLocalPosition() => cardView.gameObject.transform.localPosition;
         private void SetState(CardState state) => currentState = state;
         public enum CardState
         {

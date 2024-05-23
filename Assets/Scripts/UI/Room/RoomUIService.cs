@@ -1,5 +1,6 @@
 
 using CardGame.Events;
+using CardGame.Main;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -46,7 +47,7 @@ namespace CardGame.UI.Room
 
         private void OnClickLobbyButton()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(GlobalConstant.DASHBOARD_INDEX);
         }
         private void OnGameOver(int flag)
         {
