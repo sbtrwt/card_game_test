@@ -1,4 +1,6 @@
 using CardGame.GameRoom;
+using CardGame.Player;
+using CardGame.Player.History;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,13 +17,18 @@ namespace CardGame.UI.Dashboard
         private Button historyButton;
         private Button closeButton;
         private GameObject historyPanel;
-        public DashboardUIService(DashboardUISO dashboardUISO, Transform container, Button historyButton, Button closeButton, GameObject historyPanel)
+        private Transform historyContainer;
+        private HistoryItemView historyItemViewPrefab;
+
+        public DashboardUIService(DashboardUISO dashboardUISO, Transform container, Button historyButton, Button closeButton, GameObject historyPanel, Transform historyContainer, HistoryItemView historyPrefab)
         {
             this.dashboardUISO = dashboardUISO;
             this.parentContainer = container;
             this.historyButton = historyButton;
             this.closeButton = closeButton;
             this.historyPanel = historyPanel;
+            this.historyContainer = historyContainer;
+            this.historyItemViewPrefab = historyPrefab;
 
             RenderAllMenuButton();
             this.historyButton.onClick.AddListener(OnClickHistory);
@@ -41,13 +48,30 @@ namespace CardGame.UI.Dashboard
             }
         }
 
-        private void OnClickHistory() 
+        private void OnClickHistory()
         {
+            LoadHistory();
             historyPanel.SetActive(true);
         }
         private void OnClickCloseHistory()
         {
             historyPanel.SetActive(false);
+        }
+
+        private void LoadHistory() 
+        {
+            foreach (Transform child in historyContainer)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+            PlayerGameHistory playerGameHistory = new PlayerGameHistory();
+            List<PlayerGameData> allPlayerGameData =   playerGameHistory.GetSavedHistory();
+            HistoryItemController historyItemController; 
+            foreach (var gameData in allPlayerGameData)
+            {
+                historyItemController = new HistoryItemController(historyItemViewPrefab, historyContainer);
+                historyItemController.Init(gameData.GameShortName, gameData.PlayedOnText);
+            }
         }
     }
 

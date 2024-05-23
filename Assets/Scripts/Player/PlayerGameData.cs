@@ -11,5 +11,6 @@ namespace CardGame.Player
     {
         public string GameShortName;
         public DateTime PlayedOn;
+        public string PlayedOnText;
     }
 }

@@ -153,9 +153,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1264579640}
-  - {fileID: 620664272}
   - {fileID: 2003485690}
+  - {fileID: 620664272}
+  - {fileID: 1264579640}
   m_Father: {fileID: 1147857231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -295,6 +295,8 @@ MonoBehaviour:
   historyButton: {fileID: 1264579641}
   closeButton: {fileID: 2061909657}
   historyPanel: {fileID: 1629415937}
+  historyContainer: {fileID: 1513364046}
+  historyItemViewPrefab: {fileID: 5257817368470602942, guid: 120ce99275ab99e4ca48edd62f30a0bf, type: 3}
 --- !u!4 &407773931
 Transform:
   m_ObjectHideFlags: 0
@@ -859,7 +861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -70, y: -49}
+  m_AnchoredPosition: {x: -70, y: -49.00003}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1264579641
@@ -979,7 +981,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 0, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1513364047
 MonoBehaviour:
@@ -990,7 +992,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1513364045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -1315,8 +1317,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2061909656}
   - {fileID: 1513364046}
+  - {fileID: 2061909656}
   m_Father: {fileID: 1629415938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -1570,6 +1572,18 @@ PrefabInstance:
     - target: {fileID: 3465050171609864681, guid: 120ce99275ab99e4ca48edd62f30a0bf, type: 3}
       propertyPath: m_Name
       value: HistoryContent
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359115291992568529, guid: 120ce99275ab99e4ca48edd62f30a0bf, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359115291992568529, guid: 120ce99275ab99e4ca48edd62f30a0bf, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359115291992568529, guid: 120ce99275ab99e4ca48edd62f30a0bf, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 6383372234403281820, guid: 120ce99275ab99e4ca48edd62f30a0bf, type: 3}
       propertyPath: m_Pivot.x

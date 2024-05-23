@@ -47,7 +47,7 @@ namespace CardGame.Main
         private void AddGameEntry() 
         {
             PlayerGameHistory playerGameHistory = new PlayerGameHistory();
-            playerGameHistory.AddSavedHistory(new PlayerGameData { GameShortName = gameRoomSO.ShortTitle, PlayedOn = DateTime.Now });
+            playerGameHistory.AddSavedHistory(new PlayerGameData { GameShortName = gameRoomSO.ShortTitle, PlayedOn = DateTime.Now, PlayedOnText = DateTime.Now.ToString() });
         }
 
     }

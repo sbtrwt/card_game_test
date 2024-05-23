@@ -15,5 +15,11 @@ namespace CardGame.Player.History
             historyItemView.SetController(this);
 
         }
+
+        public void Init(string gameName, string dateTime)
+        {
+            historyItemView.SetGameNameText(gameName);
+            historyItemView.SetTimeText(dateTime);
+        }
     }
 }

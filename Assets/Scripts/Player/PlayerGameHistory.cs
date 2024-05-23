@@ -9,6 +9,7 @@ namespace CardGame.Player
     [Serializable]
     public class PlayerGameHistory
     {
+        [SerializeField]
         public List<PlayerGameData> PlayerGameDataHistory;
         public PlayerGameHistory()
         {
@@ -19,17 +20,19 @@ namespace CardGame.Player
         {
             string historyText = SecurePlayerPrefs.GetString(GlobalConstant.KEY_PLAYERDATAHISTORY);
             Debug.Log(historyText);
+            PlayerGameHistory tempHistory = new PlayerGameHistory();
             if (!string.IsNullOrEmpty(historyText))
-            { JsonUtility.FromJsonOverwrite(historyText, PlayerGameDataHistory); }
-            return PlayerGameDataHistory;
+            { JsonUtility.FromJsonOverwrite(historyText, tempHistory); }
+            return tempHistory.PlayerGameDataHistory;
         }
 
         public void AddSavedHistory(PlayerGameData newGameEntry)
         {
-            PlayerGameDataHistory = GetSavedHistory();
+          
+               PlayerGameDataHistory = GetSavedHistory();
             PlayerGameDataHistory.Add(newGameEntry);
-
-            SecurePlayerPrefs.SetString(GlobalConstant.KEY_PLAYERDATAHISTORY, JsonUtility.ToJson(PlayerGameDataHistory));
+            Debug.Log(JsonUtility.ToJson(this));
+            SecurePlayerPrefs.SetString(GlobalConstant.KEY_PLAYERDATAHISTORY, JsonUtility.ToJson(this));
            
         }
     }

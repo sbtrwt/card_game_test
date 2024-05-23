@@ -1,4 +1,5 @@
 using CardGame.GameRoom;
+using CardGame.Player.History;
 using CardGame.UI.Dashboard;
 using CardGame.Utilities;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace CardGame.Main
         [SerializeField] private Button historyButton;
         [SerializeField] private Button closeButton;
         [SerializeField] private GameObject historyPanel;
+        [SerializeField] private Transform historyContainer;
+        [SerializeField] private HistoryItemView historyItemViewPrefab;
         private void Start()
         {
             if (ApplicationValidator.IsValidUser())
@@ -30,7 +33,7 @@ namespace CardGame.Main
         }
         private void InitializeServices()
         {
-            dashBoardUIService = new DashboardUIService(dashboardUISO, gameRoomMenuContainer, historyButton, closeButton, historyPanel);
+            dashBoardUIService = new DashboardUIService(dashboardUISO, gameRoomMenuContainer, historyButton, closeButton, historyPanel, historyContainer, historyItemViewPrefab);
         }
 
         private void ShowLogin()
