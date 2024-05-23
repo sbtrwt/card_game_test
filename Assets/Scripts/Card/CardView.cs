@@ -34,7 +34,7 @@ namespace CardGame.Card
 
             }
 #endif
-#if UNITY_ANRDOID
+#if UNITY_ANDROID
             if (Input.touchCount >= 1)
             {
                 if (Input.touches[0].phase == TouchPhase.Began)
