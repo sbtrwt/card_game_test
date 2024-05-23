@@ -6,21 +6,12 @@ using UnityEngine;
 
 namespace CardGame.Main
 {
-    public class DashboardService : GenericMonoSingleton<DashboardService>
+    public class DashboardService : MonoBehaviour
     {
         private DashboardUIService dashBoardUIService;
 
         [SerializeField] private DashboardUISO dashboardUISO;
         [SerializeField] private Transform gameRoomMenuContainer;
-        
-
-        public GameRoomSO SelectedGameRoom;
-
-        protected override void Awake()
-        {
-            base.Awake();
-            DontDestroyOnLoad(this);
-        }
 
         private void Start()
         {

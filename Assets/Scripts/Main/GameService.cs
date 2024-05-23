@@ -26,9 +26,9 @@ namespace CardGame.Main
 
         private void SetGameRoomSO()
         {
-            if (DashboardService.Instance)
+            if (CommonDataService.Instance)
             {
-                gameRoomSO = DashboardService.Instance.SelectedGameRoom;
+                gameRoomSO = CommonDataService.Instance.SelectedGameRoom;
             }
         }
         private void InitializeServices()
