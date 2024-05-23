@@ -1,6 +1,8 @@
 using CardGame.Events;
 using CardGame.GameRoom;
+using CardGame.Player;
 using CardGame.UI.Room;
+using System;
 using UnityEngine;
 namespace CardGame.Main
 {
@@ -20,6 +22,7 @@ namespace CardGame.Main
             SetGameRoomSO();
             InitializeServices();
             InjectDependencies();
+            AddGameEntry();
         }
 
         private void SetGameRoomSO()
@@ -39,7 +42,13 @@ namespace CardGame.Main
             gameRoomService.Init(playerCardContainer, dropCardContainer, eventService);
             roomUIService.Init(eventService);
 
-
         }
+
+        private void AddGameEntry() 
+        {
+            PlayerGameHistory playerGameHistory = new PlayerGameHistory();
+            playerGameHistory.AddSavedHistory(new PlayerGameData { GameShortName = gameRoomSO.ShortTitle, PlayedOn = DateTime.Now, PlayedOnText = DateTime.Now.ToString() });
+        }
+
     }
 }
