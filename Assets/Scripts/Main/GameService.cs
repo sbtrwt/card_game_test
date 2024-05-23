@@ -19,10 +19,18 @@ namespace CardGame.Main
         [SerializeField] private RoomUIService roomUIService;
         private void Start()
         {
+            SetGameRoomSO();
             InitializeServices();
             InjectDependencies();
         }
 
+        private void SetGameRoomSO()
+        {
+            if (DashboardService.Instance)
+            {
+                gameRoomSO = DashboardService.Instance.SelectedGameRoom;
+            }
+        }
         private void InitializeServices()
         {
             gameRoomService = new GameRoomService(gameRoomSO);

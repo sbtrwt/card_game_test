@@ -198,7 +198,7 @@ namespace CardGame.GameRoom
         private void GameStart()
         {
             SuffleDeck();
-            DrawCards(3);
+            DrawCards(gameRoomSO.MaxHandCard);
         }
 
         private int ActiveCardsTotal()
