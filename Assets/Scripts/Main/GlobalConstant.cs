@@ -11,5 +11,7 @@ namespace CardGame.Main
         public const int DASHBOARD_INDEX = 0;
         public const int LOGIN_INDEX =1;
         public const int GAMEROOM_INDEX = 2;
+
+        public const string KEY_TOKEN = "KEY_TOKEN";
     }
 }

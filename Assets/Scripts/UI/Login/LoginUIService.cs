@@ -1,4 +1,6 @@
 using CardGame.Events;
+using CardGame.Main;
+using CardGame.Utilities;
 using System;
 using TMPro;
 using UnityEngine;
@@ -36,8 +38,9 @@ namespace CardGame.UI.Login
             }
             //Validate OTP
 
+            SecurePlayerPrefs.SetString(GlobalConstant.KEY_TOKEN, "token1");
             //Jump to Dashbaord
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(GlobalConstant.DASHBOARD_INDEX);
         }
 
         private void OnClickOTPButton()
