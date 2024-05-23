@@ -1,6 +1,7 @@
 using CardGame.Events;
 using CardGame.Main;
 using CardGame.Utilities;
+using CardGame.Utilities.APIHelper;
 using System;
 using TMPro;
 using UnityEngine;
@@ -36,11 +37,10 @@ namespace CardGame.UI.Login
                 SetMessageText("OTP is required!");
                 return;
             }
-            //Validate OTP
 
-            SecurePlayerPrefs.SetString(GlobalConstant.KEY_TOKEN, "token1");
-            //Jump to Dashbaord
-            SceneManager.LoadScene(GlobalConstant.DASHBOARD_INDEX);
+            //Validate OTP
+           StartCoroutine( APIHandler.GetRequest(GlobalConstant.APIUrl.URL_TOKENTEST, OnCallbackTokenTest));
+           
         }
 
         private void OnClickOTPButton()
@@ -62,6 +62,15 @@ namespace CardGame.UI.Login
         {
             SetMessagePanel(false);
 
+        }
+
+        private void OnCallbackTokenTest(string result)
+        {
+            Debug.Log(result);
+
+            SecurePlayerPrefs.SetString(GlobalConstant.KEY_TOKEN, "token1");
+            //Jump to Dashbaord
+            SceneManager.LoadScene(GlobalConstant.DASHBOARD_INDEX);
         }
     }
 }

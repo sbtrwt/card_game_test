@@ -13,5 +13,10 @@ namespace CardGame.Main
         public const int GAMEROOM_INDEX = 2;
 
         public const string KEY_TOKEN = "KEY_TOKEN";
+
+        public class APIUrl
+        {
+            public const string URL_TOKENTEST = "https://api.restful-api.dev/objects/7";
+        }
     }
 }
