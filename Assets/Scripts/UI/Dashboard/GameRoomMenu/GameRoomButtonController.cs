@@ -31,7 +31,7 @@ namespace CardGame.UI.Dashboard
 
         public void OnRoomButtonClick()
         {
-            CommonDataService.Instance.SelectedGameRoom = gameRoomSO;
+            CommonDataService.SelectedGameRoom = gameRoomSO;
             SceneManager.LoadScene(GlobalConstant.GAMEROOM_INDEX);
         }
     }
